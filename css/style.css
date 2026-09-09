@@ -1,0 +1,212 @@
+:root {
+  --black: #070707;
+  --ink: #f2f0eb;
+  --muted: #969690;
+  --line: rgba(255, 255, 255, .15);
+  --red: #e1262d;
+  --red-dark: #98151c;
+  --silver: #bcbdb9;
+  --panel: #101111;
+  --max: 1280px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--black); }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--ink);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: 15px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+button { color: inherit; font: inherit; cursor: pointer; }
+.section-black, .section-dark { background: var(--black); }
+.text-red { color: var(--red); }
+.eyebrow, .kicker, .statement-small, .label-number, .performance-label, .final-small {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+.loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  background: var(--black);
+  transition: opacity .7s ease, visibility .7s ease;
+}
+.loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-content { width: min(310px, 72vw); text-align: center; }
+.loader-brand { display: block; font-size: 12px; letter-spacing: .25em; font-weight: 700; }
+.loader-line { height: 1px; margin: 20px 0 12px; background: #292929; }
+.loader-line span { display: block; width: 0; height: 100%; background: var(--red); transition: width .15s linear; }
+.loader-status { color: var(--muted); font-size: 9px; letter-spacing: .16em; }
+
+.site-header {
+  position: fixed; z-index: 40; inset: 0 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding: 28px clamp(22px, 4vw, 64px);
+  mix-blend-mode: difference;
+}
+.brand { font-size: 12px; font-weight: 700; letter-spacing: .19em; }
+.header-center { text-align: center; }
+.gt-indicator { display: inline-grid; place-items: center; width: 34px; height: 22px; border: 1px solid currentColor; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.menu-button { justify-self: end; border: 0; background: none; width: 38px; padding: 8px 0; }
+.menu-button span { display: block; width: 28px; height: 1px; margin: 6px 0 6px auto; background: currentColor; transition: transform .3s, width .3s; }
+.menu-button span:last-child { width: 18px; }
+.menu-button:hover span:last-child { width: 28px; }
+
+.hero, .design-section, .performance-section, .engine-section, .interior-section, .night-drive-section, .rotation-section, .configurator-section, .final-section { position: relative; min-height: 100vh; overflow: hidden; }
+.hero { display: grid; place-items: center; isolation: isolate; background: linear-gradient(90deg, rgba(7,7,7,.96) 0%, rgba(7,7,7,.52) 48%, rgba(7,7,7,.72) 100%), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTk2MCZoZWk9NzIwJmFsaWduPTAuMDAsMC4wMCZiZmM9b2ZmJjRhMTM=") center / cover; }
+.hero::before { content: ""; position: absolute; inset: 0; opacity: .5; background: repeating-linear-gradient(115deg, transparent 0 11px, rgba(255,255,255,.025) 12px 13px); mask-image: linear-gradient(90deg, transparent, #000 55%, transparent); }
+.webgl-canvas { display: block; width: 100%; height: 100%; }
+.hero-canvas, #hero-canvas { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
+.hero-content { position: relative; width: min(var(--max), 100%); padding: 140px 6vw 80px; }
+.hero-content .eyebrow { margin: 0 0 20px; }
+.hero-title { margin: 0; font-size: clamp(72px, 15vw, 210px); line-height: .78; letter-spacing: -.08em; font-weight: 800; }
+.hero-title-main { display: block; }
+.hero-title-gt { display: block; margin-left: 34%; color: var(--red); font-size: .7em; letter-spacing: -.1em; }
+.hero-description { margin: 38px 0 0; color: var(--silver); font-size: 12px; letter-spacing: .25em; }
+.hero-bottom { position: absolute; right: 6vw; bottom: 40px; left: 6vw; display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 10px; letter-spacing: .18em; }
+.hero-line { height: 1px; flex: 1; background: var(--line); }
+
+.design-section { display: grid; place-items: center; background: #0b0b0b; }
+.design-section::before { content: "GT / 001"; position: absolute; top: 12%; right: 6%; color: #313131; font-size: 11px; letter-spacing: .2em; }
+.design-statement { width: min(1100px, 88vw); }
+.statement-small { display: block; margin-bottom: 30px; }
+.design-statement h2, .section-heading h2, .engine-content h2, .interior-content h2, .night-content h2, .rotation-heading h2, .configurator-header h2, .final-content h2 { margin: 0; font-size: clamp(52px, 9vw, 130px); line-height: .88; letter-spacing: -.08em; font-weight: 700; }
+.design-statement h2 span { display: block; }
+.technical-label, .engine-label { position: absolute; display: flex; gap: 12px; align-items: center; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
+.technical-label::before, .engine-label::before { content: ""; width: 40px; height: 1px; background: var(--red); }
+.label-one { top: 24%; left: 9%; } .label-two { top: 47%; right: 9%; } .label-three { bottom: 18%; left: 20%; }
+
+.explore-section { min-height: 100vh; padding: 150px 6vw 90px; background: #e7e6e1; color: #0c0c0c; }
+.explore-section .eyebrow { color: var(--red); }
+.section-heading { max-width: var(--max); margin: 0 auto 40px; }
+.section-heading h2 { font-size: clamp(48px, 8vw, 112px); }
+.car-viewer { position: relative; width: min(var(--max), 100%); height: 60vh; min-height: 400px; margin: auto; overflow: hidden; background: linear-gradient(90deg, rgba(20,20,20,.28), rgba(20,20,20,.08)), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTUwMCZhbGlnbj0wLjAwLDAuMDAmYmZjPW9mZiZlZjU3") center / cover; }
+.car-viewer::before, .configurator-preview::before { content: ""; position: absolute; inset: 30% 10% 14%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.82), rgba(193,193,188,.2) 40%, transparent 68%); filter: blur(12px); }
+.car-viewer::after { content: "VIRTUS GT"; position: absolute; right: 5%; bottom: 7%; color: rgba(255,255,255,.18); font-size: clamp(50px, 10vw, 150px); font-weight: 800; letter-spacing: -.09em; }
+.hotspot { position: absolute; z-index: 2; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; background: rgba(0,0,0,.15); transition: transform .25s, background .25s; }
+.hotspot:hover { transform: scale(1.18); background: var(--red); }
+.hotspot-light { top: 38%; left: 26%; } .hotspot-wheel { bottom: 23%; left: 59%; } .hotspot-badge { top: 47%; right: 22%; }
+.viewer-instruction { position: absolute; right: 4%; top: 7%; display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,.75); font-size: 10px; letter-spacing: .16em; }
+.drag-icon { font-size: 22px; }
+
+.performance-section { display: flex; align-items: center; padding: 10vw; background: #0c0c0c; }
+.performance-background { position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%, rgba(225,38,45,.18), transparent 38%); }
+.speed-lines { position: absolute; inset: 0; opacity: .25; background: repeating-linear-gradient(170deg, transparent 0 28px, var(--red) 29px 30px, transparent 31px 80px); transform: skewY(-12deg) scale(1.3); }
+.performance-content { position: relative; width: min(500px, 100%); }
+.performance-number { display: flex; align-items: baseline; gap: 12px; margin-top: 32px; }
+.number { font-size: clamp(78px, 13vw, 170px); line-height: .75; letter-spacing: -.1em; font-weight: 700; }
+.unit { color: var(--red); font-size: 15px; font-weight: 700; letter-spacing: .14em; }
+.performance-label { margin: 18px 0 0; color: var(--muted); }
+.performance-divider { width: 100%; height: 1px; margin: 40px 0; background: var(--line); }
+.performance-caption { position: absolute; right: 8vw; bottom: 12%; max-width: 260px; color: var(--muted); font-size: 12px; letter-spacing: .14em; line-height: 1.7; }
+
+.engine-section { display: flex; align-items: center; padding: 10vw; background: linear-gradient(120deg, #090909, #161616); }
+.engine-content { position: relative; z-index: 1; max-width: 420px; }
+.engine-description { max-width: 250px; margin-top: 34px; color: var(--muted); line-height: 1.7; }
+.engine-viewer { position: absolute; inset: 0 0 0 40%; background: radial-gradient(circle at 50% 50%, #343434, transparent 36%), linear-gradient(130deg, transparent 38%, rgba(225,38,45,.34) 39%, transparent 40%); }
+.engine-viewer::after { content: "1.5 TSI"; position: absolute; top: 50%; left: 50%; color: rgba(255,255,255,.12); transform: translate(-50%, -50%) rotate(-8deg); font-size: clamp(50px, 10vw, 150px); font-weight: 800; letter-spacing: -.1em; }
+.label-turbo { top: 27%; right: 25%; } .label-intake { top: 49%; right: 8%; } .label-exhaust { bottom: 22%; right: 32%; }
+
+.interior-section { display: grid; align-items: end; min-height: 85vh; background: #181818; }
+.interior-image { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,7,7,.78), rgba(7,7,7,.18)), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTk2MCZoZWk9NzIwJmFsaWduPTAuMDAsMC4wMCZiZmM9b2ZmJjRhMTM=") center / cover; }
+.interior-image::after { content: ""; position: absolute; inset: 20% 16% 8%; border: 1px solid rgba(255,255,255,.18); border-radius: 48% 52% 5% 5%; transform: perspective(500px) rotateX(10deg); box-shadow: inset 0 0 100px rgba(225,38,45,.16); }
+.interior-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #070707 0%, transparent 70%), linear-gradient(0deg, #070707, transparent 45%); }
+.interior-content { position: relative; z-index: 1; padding: 10vw 6vw; }
+.interior-content h2 span { color: var(--red); }
+.interior-content p { color: var(--silver); }
+.interior-spec { position: absolute; z-index: 1; right: 6vw; bottom: 10vw; display: flex; gap: 30px; color: var(--muted); font-size: 10px; letter-spacing: .14em; }
+
+.night-drive-section { display: grid; place-items: center; background: #06080b; }
+.night-environment { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,10,13,.18), rgba(8,10,13,.7)), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTk2MCZoZWk9NzIwJmFsaWduPTAuMDAsMC4wMCZiZmM9b2ZmJjRhMTM=") center / cover; }
+.night-environment::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 12%, rgba(142,164,189,.18) 12.1% 12.3%, transparent 12.4% 19%); transform: perspective(300px) rotateX(50deg) translateY(-30%); }
+.road { position: absolute; bottom: -25%; left: 20%; width: 60%; height: 80%; background: linear-gradient(90deg, transparent, #24272a 20%, #4d4f4c 50%, #24272a 80%, transparent); transform: perspective(300px) rotateX(55deg); }
+.night-car { position: absolute; bottom: 27%; width: min(550px, 66vw); height: 100px; border-radius: 48% 55% 12% 12%; background: linear-gradient(160deg, #fafafa 0 12%, #41474e 31%, #0b0c0d 78%); box-shadow: 0 0 35px 8px rgba(225,38,45,.35); transform: skewX(-10deg); }
+.car-placeholder { position: absolute; inset: 0; display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding-right: 12%; font-size: 20px; letter-spacing: .15em; }
+.car-placeholder strong { color: var(--red); font-size: 38px; }
+.night-content { position: absolute; z-index: 1; top: 18%; left: 8%; }
+.night-content h2 span { display: block; color: var(--red); margin-left: 1em; }
+.night-time { position: absolute; right: 6%; top: 14%; color: var(--muted); font-size: 11px; letter-spacing: .2em; }
+
+.rotation-section { display: grid; grid-template-rows: auto 1fr auto; padding: 12vh 6vw 8vh; text-align: center; }
+.rotation-heading h2 { font-size: clamp(50px, 8vw, 110px); }
+.rotation-viewer { position: relative; min-height: 45vh; margin: 20px auto; width: min(900px, 100%); background: radial-gradient(ellipse, #555 0, #161616 37%, transparent 68%); }
+.rotation-viewer::after { content: "GT"; position: absolute; inset: 50% auto auto 50%; color: rgba(255,255,255,.13); transform: translate(-50%, -50%); font-size: clamp(140px, 24vw, 300px); font-weight: 800; letter-spacing: -.12em; }
+.rotation-controls { display: flex; justify-content: center; gap: 10px; }
+.rotation-control, .text-option { border: 1px solid var(--line); background: transparent; padding: 13px 20px; color: var(--muted); font-size: 10px; letter-spacing: .14em; }
+.rotation-control.active, .text-option.active { border-color: var(--red); color: var(--ink); }
+
+.configurator-section { padding: 12vh 6vw; background: #e8e7e2; color: #101010; }
+.configurator-header { width: min(var(--max), 100%); margin: auto; }
+.configurator-header .eyebrow { color: var(--red); }
+.configurator-header h2 { font-size: clamp(48px, 8vw, 105px); }
+.configurator-layout { display: grid; grid-template-columns: 1.4fr .6fr; gap: 7vw; width: min(var(--max), 100%); margin: 60px auto 0; }
+.configurator-preview { position: relative; min-height: 400px; overflow: hidden; background: linear-gradient(90deg, rgba(30,30,30,.1), rgba(30,30,30,.3)), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTUwMCZhbGlnbj0wLjAwLDAuMDAmYmZjPW9mZiZlZjU3") center / cover; }
+.configurator-preview::after { content: "VIRTUS"; position: absolute; right: 5%; bottom: 5%; color: rgba(255,255,255,.2); font-size: clamp(50px, 9vw, 130px); font-weight: 800; letter-spacing: -.1em; }
+.configurator-controls { align-self: center; }
+.config-group { padding: 0 0 28px; margin: 0 0 28px; border: 0; border-bottom: 1px solid rgba(0,0,0,.15); }
+.config-group legend { margin-bottom: 18px; color: #666; font-size: 10px; font-weight: 700; letter-spacing: .18em; }
+.color-options, .option-row { display: flex; gap: 12px; }
+.color-option { width: 31px; height: 31px; padding: 0; border: 2px solid transparent; border-radius: 50%; }
+.color-option.active { outline: 1px solid var(--red); outline-offset: 4px; }
+.color-white { background: #e9e9e7; } .color-black { background: #161719; } .color-red { background: var(--red); } .color-grey { background: #74787a; }
+.configurator-section .text-option { color: #666; border-color: rgba(0,0,0,.2); }
+.configurator-section .text-option.active { color: #101010; border-color: var(--red); }
+.build-summary { padding: 20px 0; }
+.build-summary div { display: flex; justify-content: space-between; margin: 12px 0; font-size: 11px; letter-spacing: .08em; }
+.build-summary span { color: #777; } .build-summary strong { font-size: 11px; }
+.build-button, .final-button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 18px 20px; border: 0; background: var(--red); color: white; font-size: 11px; font-weight: 700; letter-spacing: .18em; transition: background .25s, transform .25s; }
+.build-button:hover, .final-button:hover { background: #ba1920; transform: translateY(-3px); }
+.build-button span, .final-button span { font-size: 22px; font-weight: 300; }
+
+.final-section { display: grid; place-items: center; text-align: center; background: linear-gradient(rgba(7,7,7,.7), rgba(7,7,7,.82)), url("https://assets.volkswagen.com/is/image/volkswagenag/virtus-home-dekstop?Zml0PWNyb3AsMSZmbXQ9d2VicC1hbHBoYSZxbHQ9Nzkmd2lkPTk2MCZoZWk9NzIwJmFsaWduPTAuMDAsMC4wMCZiZmM9b2ZmJjRhMTM=") center / cover; }
+.final-background { position: absolute; inset: 0; opacity: .25; background: repeating-linear-gradient(120deg, transparent 0 45px, var(--red) 46px 47px, transparent 48px 130px); transform: skewY(-14deg) scale(1.3); }
+.final-content { position: relative; }
+.final-content h2 span { display: block; }
+.final-content h2 { font-size: clamp(65px, 12vw, 175px); }
+.final-brand { margin: 50px 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .3em; }
+.final-tagline { color: var(--muted); font-size: 11px; letter-spacing: .18em; }
+.final-button { width: auto; gap: 50px; margin: 42px auto 0; }
+.site-footer { display: grid; grid-template-columns: 1fr auto 1fr; padding: 35px 6vw; background: #050505; color: var(--muted); font-size: 10px; letter-spacing: .16em; }
+.footer-center { color: var(--ink); text-align: center; } .footer-meta { display: flex; justify-content: flex-end; gap: 20px; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } .reveal { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .site-header { padding-top: 20px; }
+  .hero-content { padding-inline: 8vw; }
+  .hero-title { font-size: clamp(66px, 19vw, 130px); }
+  .hero-title-gt { margin-left: 22%; }
+  .hero-bottom { right: 8vw; left: 8vw; }
+  .technical-label, .engine-label { font-size: 8px; }
+  .technical-label::before, .engine-label::before { width: 20px; }
+  .label-one { left: 6%; } .label-two { right: 5%; } .label-three { left: 10%; }
+  .performance-section { padding: 22vw 8vw; }
+  .performance-caption { right: 8vw; bottom: 8%; }
+  .engine-section { padding: 22vw 8vw; align-items: start; }
+  .engine-viewer { inset: 40% 0 0; }
+  .label-turbo { top: 50%; right: 30%; } .label-intake { top: 65%; right: 8%; } .label-exhaust { bottom: 18%; right: 28%; }
+  .interior-spec { right: 8vw; bottom: 8vw; display: block; line-height: 2; }
+  .interior-spec span { display: block; }
+  .night-car { width: 78vw; height: 75px; }
+  .configurator-layout { grid-template-columns: 1fr; margin-top: 35px; }
+  .configurator-preview { min-height: 280px; }
+  .site-footer { grid-template-columns: 1fr 1fr; gap: 20px; padding-inline: 8vw; }
+  .footer-center { text-align: left; } .footer-meta { grid-column: 1 / -1; justify-content: space-between; }
+}

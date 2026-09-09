@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Volkswagen Virtus GT — The Drive. An interactive automotive experience.">
+
+    <meta name="theme-color" content="#050505">
+
+    <title>VIRTUS GT — THE DRIVE</title>
+
+    <!--
+        Fonts
+        We'll replace these with a locally hosted font later if required.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         LOADING SCREEN
+    ========================================================== -->
+
+    <div id="loader" class="loader">
+
+        <div class="loader-content">
+
+            <span class="loader-brand">
+                VOLKSWAGEN
+            </span>
+
+            <div class="loader-line">
+                <span id="loader-progress"></span>
+            </div>
+
+            <span class="loader-status">
+                INITIALIZING EXPERIENCE
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         CUSTOM CURSOR
+    ========================================================== -->
+
+    <div class="cursor">
+        <span></span>
+    </div>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <header class="site-header">
+
+        <a href="#hero" class="brand">
+            VOLKSWAGEN
+        </a>
+
+        <div class="header-center">
+            <span class="gt-indicator">GT</span>
+        </div>
+
+        <button
+            class="menu-button"
+            type="button"
+            aria-label="Open navigation menu">
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN EXPERIENCE
+    ========================================================== -->
+
+    <main id="experience">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section id="hero"
+                 class="hero section-dark"
+                 data-section="hero">
+
+            <!-- WebGL / Three.js canvas will eventually live here -->
+
+            <canvas
+                id="hero-canvas"
+                class="webgl-canvas"
+                aria-label="Interactive Volkswagen Virtus GT 3D model">
+            </canvas>
+
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    VOLKSWAGEN PERFORMANCE
+                </p>
+
+                <h1 class="hero-title">
+
+                    <span class="hero-title-main">
+                        VIRTUS
+                    </span>
+
+                    <span class="hero-title-gt">
+                        GT
+                    </span>
+
+                </h1>
+
+                <p class="hero-description">
+                    ENGINEERED TO MOVE.
+                </p>
+
+            </div>
+
+
+            <div class="hero-bottom">
+
+                <span class="hero-scroll">
+                    SCROLL TO START
+                </span>
+
+                <span class="hero-line"></span>
+
+                <span class="hero-index">
+                    01 / 08
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DESIGN INTRO
+        ====================================================== -->
+
+        <section id="design"
+                 class="design-section section-black"
+                 data-section="design">
+
+            <div class="design-statement">
+
+                <span class="statement-small">
+                    DESIGN
+                </span>
+
+                <h2>
+
+                    <span>DESIGNED</span>
+                    <span>TO</span>
+                    <span>BE</span>
+                    <span class="text-red">SEEN.</span>
+
+                </h2>
+
+            </div>
+
+
+            <!-- Floating technical labels -->
+
+            <div class="technical-label label-one">
+                <span class="label-number">01</span>
+                <span>LED LIGHTING</span>
+            </div>
+
+            <div class="technical-label label-two">
+                <span class="label-number">02</span>
+                <span>SPORT SILHOUETTE</span>
+            </div>
+
+            <div class="technical-label label-three">
+                <span class="label-number">03</span>
+                <span>GT DNA</span>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             3D CAR EXPLORATION
+        ====================================================== -->
+
+        <section id="explore"
+                 class="explore-section"
+                 data-section="explore">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    EXPLORE
+                </p>
+
+                <h2>
+                    MEET THE
+                    <span class="text-red">MACHINE.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="car-viewer">
+
+                <canvas
+                    id="car-canvas"
+                    class="webgl-canvas"
+                    aria-label="3D Volkswagen Virtus GT viewer">
+                </canvas>
+
+
+                <!-- Interactive hotspots -->
+
+                <button
+                    class="hotspot hotspot-light"
+                    type="button"
+                    aria-label="Explore headlights">
+
+                    <span>+</span>
+
+                </button>
+
+                <button
+                    class="hotspot hotspot-wheel"
+                    type="button"
+                    aria-label="Explore wheels">
+
+                    <span>+</span>
+
+                </button>
+
+                <button
+                    class="hotspot hotspot-badge"
+                    type="button"
+                    aria-label="Explore GT badge">
+
+                    <span>+</span>
+
+                </button>
+
+
+                <div class="viewer-instruction">
+
+                    <span class="drag-icon">
+                        ↔
+                    </span>
+
+                    <span>
+                        DRAG TO ROTATE
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PERFORMANCE
+        ====================================================== -->
+
+        <section id="performance"
+                 class="performance-section section-dark"
+                 data-section="performance">
+
+            <div class="performance-background">
+                <div class="speed-lines"></div>
+            </div>
+
+
+            <div class="performance-content">
+
+                <p class="eyebrow">
+                    PERFORMANCE
+                </p>
+
+                <div class="performance-number">
+
+                    <span class="number"
+                          data-value="150">
+                        0
+                    </span>
+
+                    <span class="unit">
+                        PS
+                    </span>
+
+                </div>
+
+                <p class="performance-label">
+                    POWER
+                </p>
+
+
+                <div class="performance-divider"></div>
+
+
+                <div class="performance-number">
+
+                    <span class="number"
+                          data-value="250">
+                        0
+                    </span>
+
+                    <span class="unit">
+                        Nm
+                    </span>
+
+                </div>
+
+                <p class="performance-label">
+                    TORQUE
+                </p>
+
+
+                <div class="performance-divider"></div>
+
+
+                <div class="performance-number">
+
+                    <span class="number"
+                          data-value="7">
+                        0
+                    </span>
+
+                    <span class="unit">
+                        DSG
+                    </span>
+
+                </div>
+
+                <p class="performance-label">
+                    TRANSMISSION
+                </p>
+
+            </div>
+
+
+            <div class="performance-caption">
+                POWER IS NOT JUST A NUMBER.
+                <br>
+                IT'S A FEELING.
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ENGINE
+        ====================================================== -->
+
+        <section id="engine"
+                 class="engine-section section-black"
+                 data-section="engine">
+
+            <div class="engine-content">
+
+                <p class="eyebrow">
+                    UNDER THE HOOD
+                </p>
+
+                <h2>
+                    THE HEART
+                    <br>
+                    OF <span class="text-red">GT.</span>
+                </h2>
+
+                <p class="engine-description">
+                    Explore the engineering behind the performance.
+                    Scroll to deconstruct the machine.
+                </p>
+
+            </div>
+
+
+            <div class="engine-viewer">
+
+                <canvas
+                    id="engine-canvas"
+                    class="webgl-canvas"
+                    aria-label="Interactive 3D engine">
+                </canvas>
+
+            </div>
+
+
+            <div class="engine-label label-turbo">
+                <span class="label-number">01</span>
+                TURBO
+            </div>
+
+            <div class="engine-label label-intake">
+                <span class="label-number">02</span>
+                INTAKE
+            </div>
+
+            <div class="engine-label label-exhaust">
+                <span class="label-number">03</span>
+                EXHAUST
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INTERIOR
+        ====================================================== -->
+
+        <section id="interior"
+                 class="interior-section"
+                 data-section="interior">
+
+            <div class="interior-image"></div>
+
+            <div class="interior-overlay"></div>
+
+
+            <div class="interior-content">
+
+                <p class="eyebrow">
+                    INSIDE THE GT
+                </p>
+
+                <h2>
+                    HUMAN
+                    <span>×</span>
+                    MACHINE
+                </h2>
+
+                <p>
+                    Everything you need.
+                    Everything within reach.
+                </p>
+
+            </div>
+
+
+            <div class="interior-spec">
+
+                <span>
+                    DIGITAL EXPERIENCE
+                </span>
+
+                <span>
+                    PRECISION CONTROL
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             NIGHT DRIVE
+        ====================================================== -->
+
+        <section id="night-drive"
+                 class="night-drive-section"
+                 data-section="night-drive">
+
+            <div class="night-environment"></div>
+
+            <div class="road"></div>
+
+            <div class="night-car">
+
+                <!-- Temporary placeholder.
+                     Replace with 3D model later. -->
+
+                <div class="car-placeholder">
+
+                    <span>
+                        VIRTUS
+                    </span>
+
+                    <strong>
+                        GT
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="night-content">
+
+                <p class="eyebrow">
+                    AFTER DARK IT WILL BE GLOWING
+                </p>
+
+                <h2>
+                    OWN
+                    <span>THE</span>
+                    NIGHT.
+                </h2>
+
+            </div>
+
+
+            <div class="night-time">
+                23:41
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             360 EXPERIENCE
+        ====================================================== -->
+
+        <section id="360"
+                 class="rotation-section section-black"
+                 data-section="360">
+
+            <div class="rotation-heading">
+
+                <p class="eyebrow">
+                    360° EXPERIENCE
+                </p>
+
+                <h2>
+                    YOUR
+                    <span class="text-red">ANGLE.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="rotation-viewer">
+
+                <canvas
+                    id="rotation-canvas"
+                    class="webgl-canvas"
+                    aria-label="360 degree Volkswagen Virtus GT viewer">
+                </canvas>
+
+            </div>
+
+
+            <div class="rotation-controls">
+
+                <button type="button" class="rotation-control active">
+                    EXTERIOR
+                </button>
+
+                <button type="button" class="rotation-control">
+                    INTERIOR
+                </button>
+
+                <button type="button" class="rotation-control">
+                    DETAILS
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONFIGURATOR
+        ====================================================== -->
+
+        <section id="configurator"
+                 class="configurator-section"
+                 data-section="configurator">
+
+            <div class="configurator-header">
+
+                <p class="eyebrow">
+                    YOUR GT
+                </p>
+
+                <h2>
+                    BUILD
+                    <span class="text-red">YOUR</span>
+                    VIRTUS.
+                </h2>
+
+            </div>
+
+
+            <div class="configurator-layout">
+
+
+                <!-- 3D preview -->
+
+                <div class="configurator-preview">
+
+                    <canvas
+                        id="configurator-canvas"
+                        class="webgl-canvas"
+                        aria-label="Virtus GT configurator">
+                    </canvas>
+
+                </div>
+
+
+                <!-- Configuration controls -->
+
+                <div class="configurator-controls">
+
+
+                    <!-- Color -->
+
+                    <fieldset class="config-group">
+
+                        <legend>
+                            EXTERIOR COLOR
+                        </legend>
+
+                        <div class="color-options">
+
+                            <button
+                                type="button"
+                                class="color-option color-white active"
+                                aria-label="White">
+                            </button>
+
+                            <button
+                                type="button"
+                                class="color-option color-black"
+                                aria-label="Black">
+                            </button>
+
+                            <button
+                                type="button"
+                                class="color-option color-red"
+                                aria-label="Red">
+                            </button>
+
+                            <button
+                                type="button"
+                                class="color-option color-grey"
+                                aria-label="Grey">
+                            </button>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <!-- Wheels -->
+
+                    <fieldset class="config-group">
+
+                        <legend>
+                            WHEELS
+                        </legend>
+
+                        <div class="option-row">
+
+                            <button
+                                type="button"
+                                class="text-option active">
+                                SPORT
+                            </button>
+
+                            <button
+                                type="button"
+                                class="text-option">
+                                PERFORMANCE
+                            </button>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <!-- Interior -->
+
+                    <fieldset class="config-group">
+
+                        <legend>
+                            INTERIOR
+                        </legend>
+
+                        <div class="option-row">
+
+                            <button
+                                type="button"
+                                class="text-option active">
+                                DARK
+                            </button>
+
+                            <button
+                                type="button"
+                                class="text-option">
+                                PREMIUM
+                            </button>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <!-- Summary -->
+
+                    <div class="build-summary">
+
+                        <div>
+                            <span>MODEL</span>
+                            <strong>VIRTUS GT</strong>
+                        </div>
+
+                        <div>
+                            <span>ENGINE</span>
+                            <strong>1.5L TSI</strong>
+                        </div>
+
+                        <div>
+                            <span>TRANSMISSION</span>
+                            <strong>7-SPEED DSG</strong>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="build-button">
+
+                        SAVE MY GT
+
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FINAL REVEAL
+        ====================================================== -->
+
+        <section id="final"
+                 class="final-section section-black"
+                 data-section="final">
+
+            <div class="final-background"></div>
+
+
+            <div class="final-content">
+
+                <p class="final-small">
+                    YOU'VE SEEN IT.
+                </p>
+
+                <h2>
+
+                    <span>NOW</span>
+                    <span>FEEL</span>
+                    <span class="text-red">IT.</span>
+
+                </h2>
+
+                <p class="final-brand">
+                    VIRTUS GT
+                </p>
+
+                <p class="final-tagline">
+                    THE DRIVE STARTS HERE.
+                </p>
+
+
+                <button
+                    type="button"
+                    class="final-button">
+
+                    EXPERIENCE GT
+
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-brand">
+            VOLKSWAGEN
+        </div>
+
+        <div class="footer-center">
+            VIRTUS GT
+        </div>
+
+        <div class="footer-meta">
+            <span>THE DRIVE</span>
+            <span>© 2026</span>
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         SCRIPTS
+    ========================================================== -->
+
+    <!-- GSAP -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js">
+    </script>
+
+
+    <!-- Three.js -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js">
+    </script>
+
+
+    <!-- Application -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
