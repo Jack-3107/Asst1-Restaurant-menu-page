@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amma's Thali — Menu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --paper: #FAF1E1;
+    --paper-edge: #F0E3C9;
+    --ink: #3B2417;
+    --ink-soft: #6B5341;
+    --turmeric: #C1861A;
+    --leaf: #4C6B3E;
+    --chili: #A63A2C;
+    --rule: #D8C7A2;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--paper-edge);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet{
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 8% 12%, rgba(76,107,62,0.05), transparent 40%),
+      radial-gradient(circle at 92% 88%, rgba(166,58,44,0.05), transparent 40%);
+    padding: 64px 56px 80px;
+    box-shadow: 0 0 0 1px rgba(59,36,23,0.06);
+  }
+
+  header{
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .kicker{
+    color: var(--leaf);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    margin: 0 0 6px;
+  }
+
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(38px, 6vw, 54px);
+    margin: 0;
+    line-height: 1.05;
+    color: var(--chili);
+  }
+
+  .tagline{
+    font-style: italic;
+    color: var(--ink-soft);
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    margin: 10px 0 0;
+  }
+
+  .motif{
+    width: 120px;
+    height: 14px;
+    margin: 22px auto 0;
+    opacity: 0.8;
+  }
+
+  section.course{ margin-top: 46px; }
+
+  .course-heading{
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .course-heading h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--leaf);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .course-heading .line{
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .dish{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .dish:last-child{ border-bottom: none; }
+
+  .dish-name{
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+  }
+
+  .veg-mark{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid var(--leaf);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .veg-mark::after{
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: var(--leaf);
+    margin: 1.75px;
+    border-radius: 50%;
+  }
+  .spice-mark{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid var(--chili);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .spice-mark::after{
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: var(--chili);
+    margin: 1.75px;
+    border-radius: 50%;
+  }
+
+  .dish-desc{
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-top: 4px;
+    max-width: 46ch;
+  }
+
+  .price{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--turmeric);
+    align-self: start;
+    white-space: nowrap;
+  }
+
+  footer{
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+  }
+
+  footer p{ margin: 4px 0; }
+
+  .legend{
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .legend span{ display: flex; align-items: center; }
+
+  @media (max-width: 600px){
+    .sheet{ padding: 40px 22px 56px; }
+    .dish{ grid-template-columns: 1fr; row-gap: 4px; }
+    .price{ justify-self: start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <header>
+    <p class="kicker">South Indian kitchen &amp; tiffin house</p>
+    <h1>Amma's Thali</h1>
+    <p class="tagline">Slow-cooked recipes from Tamil Nadu, served the way home does</p>
+    <svg class="motif" viewBox="0 0 120 14" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 7 Q30 -4 60 7 T120 7" stroke="#4C6B3E" stroke-width="1.4" fill="none"/>
+    </svg>
+  </header>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Starters</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Masala Vadai</div>
+        <div class="dish-desc">Coarse-ground chana dal fritters with onion, curry leaf and green chilli.</div>
+      </div>
+      <div class="price">₹90</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Chicken 65</div>
+        <div class="dish-desc">Deep-fried chicken tossed in curry leaf, ginger-garlic and dry red chilli.</div>
+      </div>
+      <div class="price">₹220</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Fish Fry</div>
+        <div class="dish-desc">Vanjaram steaks marinated in red chilli and tamarind, shallow-fried.</div>
+      </div>
+      <div class="price">₹260</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Mushroom 65</div>
+        <div class="dish-desc">Batter-fried mushroom tossed with curry leaf and black pepper.</div>
+      </div>
+      <div class="price">₹190</div>
+    </div>
+  </section>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Tiffin</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Ghee Roast Dosai</div>
+        <div class="dish-desc">Fermented rice-and-lentil crepe, crisped in ghee, served with sambar and two chutneys.</div>
+      </div>
+      <div class="price">₹120</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Idli (4 pcs)</div>
+        <div class="dish-desc">Steamed rice cakes, feather-light, with coconut chutney and molagapodi.</div>
+      </div>
+      <div class="price">₹80</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Pongal</div>
+        <div class="dish-desc">Rice and moong dal simmered with pepper, cumin, ginger and cashew.</div>
+      </div>
+      <div class="price">₹90</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Medu Vadai (2 pcs)</div>
+        <div class="dish-desc">Crisp lentil doughnuts, soaked lightly in sambar on request.</div>
+      </div>
+      <div class="price">₹70</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Onion Uttapam</div>
+        <div class="dish-desc">Thick fermented-batter pancake studded with onion, chilli and coriander.</div>
+      </div>
+      <div class="price">₹110</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Pesarattu</div>
+        <div class="dish-desc">Whole green-gram crepe from the Andhra border, served with ginger chutney.</div>
+      </div>
+      <div class="price">₹100</div>
+    </div>
+  </section>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Curries &amp; Kulambu</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Chettinad Chicken Curry</div>
+        <div class="dish-desc">Country chicken in a roasted-spice masala with curry leaf and shallot.</div>
+      </div>
+      <div class="price">₹280</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Vatha Kuzhambu</div>
+        <div class="dish-desc">Tangy tamarind gravy with sun-dried vegetables, a Tamil Nadu staple.</div>
+      </div>
+      <div class="price">₹150</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Mutton Sukka</div>
+        <div class="dish-desc">Slow-dry-roasted mutton with coconut, black pepper and fennel.</div>
+      </div>
+      <div class="price">₹340</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Kara Kuzhambu</div>
+        <div class="dish-desc">Fiery tamarind-onion gravy, best with rice and a spoon of ghee.</div>
+      </div>
+      <div class="price">₹140</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Meen Kuzhambu</div>
+        <div class="dish-desc">Seer fish simmered in a tamarind-tomato gravy with fenugreek.</div>
+      </div>
+      <div class="price">₹260</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Mixed Vegetable Kootu</div>
+        <div class="dish-desc">Lentils and seasonal vegetables in a mild coconut-cumin base.</div>
+      </div>
+      <div class="price">₹130</div>
+    </div>
+  </section>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Breads</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Parotta (2 pcs)</div>
+        <div class="dish-desc">Layered, flaky maida flatbread, hand-beaten on the tawa.</div>
+      </div>
+      <div class="price">₹50</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Chapati (2 pcs)</div>
+        <div class="dish-desc">Whole-wheat flatbread, rolled thin and cooked over open flame.</div>
+      </div>
+      <div class="price">₹40</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Kothu Parotta</div>
+        <div class="dish-desc">Shredded parotta tossed with egg, onion, chilli and masala on the flat griddle.</div>
+      </div>
+      <div class="price">₹150</div>
+    </div>
+  </section>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Rice &amp; Meals</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Full Meals</div>
+        <div class="dish-desc">Rice, sambar, rasam, kootu, poriyal, appalam and curd — served on banana leaf.</div>
+      </div>
+      <div class="price">₹180</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Curd Rice</div>
+        <div class="dish-desc">Cooling rice folded with curd, tempered with mustard and curry leaf.</div>
+      </div>
+      <div class="price">₹90</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="spice-mark"></span>Chicken Biryani</div>
+        <div class="dish-desc">Seeraga samba rice layered with marinated chicken and fried onion.</div>
+      </div>
+      <div class="price">₹260</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Vegetable Biryani</div>
+        <div class="dish-desc">Seasonal vegetables and paneer layered with seeraga samba rice.</div>
+      </div>
+      <div class="price">₹210</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Lemon Rice</div>
+        <div class="dish-desc">Rice tempered with mustard, peanut, curry leaf and fresh lemon.</div>
+      </div>
+      <div class="price">₹100</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Sambar Rice</div>
+        <div class="dish-desc">Rice folded through lentil-vegetable sambar, finished with ghee.</div>
+      </div>
+      <div class="price">₹110</div>
+    </div>
+  </section>
+
+  <section class="course">
+    <div class="course-heading">
+      <h2>Beverages &amp; Sweet</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Filter Coffee</div>
+        <div class="dish-desc">Decoction brewed slow, served in a davara-tumbler with frothed milk.</div>
+      </div>
+      <div class="price">₹40</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Sukku Malli Coffee</div>
+        <div class="dish-desc">Dry-ginger and coriander brew, warming and lightly spiced.</div>
+      </div>
+      <div class="price">₹45</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Pal Payasam</div>
+        <div class="dish-desc">Rice simmered in milk and jaggery, finished with cardamom and cashew.</div>
+      </div>
+      <div class="price">₹70</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Spiced Buttermilk</div>
+        <div class="dish-desc">Churned curd with curry leaf, ginger, green chilli and asafoetida.</div>
+      </div>
+      <div class="price">₹35</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Rasam</div>
+        <div class="dish-desc">Tamarind-pepper broth, sipped hot before or after the meal.</div>
+      </div>
+      <div class="price">₹50</div>
+    </div>
+
+    <div class="dish">
+      <div>
+        <div class="dish-name"><span class="veg-mark"></span>Mysore Pak</div>
+        <div class="dish-desc">Gram-flour and ghee fudge, dense on the inside, delicately porous throughout.</div>
+      </div>
+      <div class="price">₹60</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="legend">
+      <span><span class="veg-mark"></span>&nbsp;Vegetarian</span>
+      <span><span class="spice-mark"></span>&nbsp;Non-vegetarian</span>
+    </div>
+    <p>Open 7:00 AM – 10:30 PM · Closed on the last Monday of the month</p>
+    <p>Prices inclusive of taxes · A la carte, subject to seasonal availability</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
